@@ -75,10 +75,10 @@ android {
 
     productFlavors {
         internal {
-            applicationId 'com.jakewharton.u2020.internal'
+            applicationId 'no.noname.baseapp.internal'
         }
         production {
-            applicationId 'com.jakewharton.u2020'
+            applicationId 'no.noname.baseapp'
         }
     }
 
@@ -110,6 +110,7 @@ configurations.all {
 }
 
 dependencies {
+    compile project (":domain")
     compile 'com.android.support:support-v4:23.3.0'
     compile 'com.android.support:support-annotations:23.3.0'
     compile 'com.android.support:appcompat-v7:23.3.0'
@@ -128,8 +129,8 @@ dependencies {
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0'
     internalDebugCompile 'com.squareup.retrofit2:retrofit-mock:2.0.0'
 
-    compile 'com.jakewharton:butterknife:8.0.1'
-    apt 'com.jakewharton:butterknife-compiler:8.0.1'
+    compile 'com.jakewharton:butterknife:8.2.1'
+    apt 'com.jakewharton:butterknife-compiler:8.2.1'
     compile 'com.jakewharton.timber:timber:4.0.1'
     compile 'com.jakewharton.byteunits:byteunits:0.9.1'
     compile 'com.jakewharton.rxbinding:rxbinding:0.3.0'

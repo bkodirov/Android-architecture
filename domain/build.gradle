@@ -1,0 +1,24 @@
+apply plugin: 'java'
+
+targetCompatibility = '1.7'
+sourceCompatibility = '1.7'
+
+configurations {
+    provided
+}
+
+sourceSets {
+    main {
+        compileClasspath += configurations.provided
+    }
+}
+
+dependencies {
+    provided "javax.annotation:jsr250-api:$depJavaxAnnotationVersion"
+
+    compile "javax.inject:javax.inject:$depJavaxInjectVersion"
+    compile "io.reactivex:rxjava:$depRxJavaVersion"
+
+    testCompile  "junit:junit:$depJUnitVersion"
+    testCompile  "org.mockito:mockito-core:$depMockitoVersion"
+}
