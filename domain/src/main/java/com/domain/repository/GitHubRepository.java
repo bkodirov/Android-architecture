@@ -13,27 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.data.repository.datasource;
+package com.domain.repository;
 
 
-
-import com.data.model.RepositoryRestDto;
 import com.domain.entity.Order;
+import com.domain.entity.Repository;
 import com.domain.entity.SearchQuery;
 import com.domain.entity.Sort;
-import com.domain.entity.Repository;
 
 import java.util.List;
 
 import rx.Observable;
 
 /**
- * Interface that represents a data store from where data is retrieved.
+ * Interface that represents a Repository for getting {@link List<Repository>} related data.
  */
-public interface UserDataStore {
+public interface GitHubRepository {
   /**
-   * Get an {@link Observable} which will emit a List of {@link List<Repository>}.
+   * Get an {@link rx.Observable} which will emit a List of {@link List<Repository>}.
    */
-  Observable<List<RepositoryRestDto>> repositoryList(SearchQuery query, Sort sort, Order order);
+  Observable<List<Repository>> getRepositories(SearchQuery query, Sort sort, Order order);
 
 }

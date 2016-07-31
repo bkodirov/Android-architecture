@@ -18,11 +18,13 @@ package com.data.cache;
 import android.content.Context;
 
 import com.data.cache.serializer.JsonSerializer;
-import com.data.entity.UserEntity;
+import com.data.model.RepositoriesResponseRestDto;
 import com.data.exception.UserNotFoundException;
+import com.data.model.RepositoryRestDto;
 import com.domain.executor.ThreadExecutor;
 
 import java.io.File;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -68,14 +70,14 @@ public class UserCacheImpl implements UserCache {
   }
 
   @Override
-  public Observable<UserEntity> get(final int userId) {
+  public Observable<List<RepositoryRestDto>> get(final int userId) {
     return Observable.create(subscriber -> {
       File userEntityFile = UserCacheImpl.this.buildFile(userId);
       String fileContent = UserCacheImpl.this.fileManager.readFileContent(userEntityFile);
-      UserEntity userEntity = UserCacheImpl.this.serializer.deserialize(fileContent);
+      RepositoriesResponseRestDto userEntity = UserCacheImpl.this.serializer.deserialize(fileContent);
 
       if (userEntity != null) {
-        subscriber.onNext(userEntity);
+        subscriber.onNext(userEntity.items);
         subscriber.onCompleted();
       } else {
         subscriber.onError(new UserNotFoundException());
@@ -84,16 +86,16 @@ public class UserCacheImpl implements UserCache {
   }
 
   @Override
-  public void put(UserEntity userEntity) {
-    if (userEntity != null) {
-      File userEntitiyFile = this.buildFile(userEntity.getUserId());
-      if (!isCached(userEntity.getUserId())) {
-        String jsonString = this.serializer.serialize(userEntity);
-        this.executeAsynchronously(new CacheWriter(this.fileManager, userEntitiyFile,
-            jsonString));
-        setLastCacheUpdateTimeMillis();
-      }
-    }
+  public void put(List<RepositoryRestDto> userEntity) {
+//    if (userEntity != null) {
+//      File userEntitiyFile = this.buildFile(userEntity.getUserId());
+//      if (!isCached(userEntity.getUserId())) {
+//        String jsonString = this.serializer.serialize(userEntity);
+//        this.executeAsynchronously(new CacheWriter(this.fileManager, userEntitiyFile,
+//            jsonString));
+//        setLastCacheUpdateTimeMillis();
+//      }
+//    }
   }
 
   @Override

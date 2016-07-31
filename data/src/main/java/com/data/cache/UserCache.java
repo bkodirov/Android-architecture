@@ -16,7 +16,12 @@
 package com.data.cache;
 
 
-import com.data.entity.UserEntity;
+
+
+import com.data.model.RepositoryRestDto;
+import com.domain.entity.Repository;
+
+import java.util.List;
 
 import rx.Observable;
 
@@ -25,18 +30,18 @@ import rx.Observable;
  */
 public interface UserCache {
   /**
-   * Gets an {@link Observable} which will emit a {@link UserEntity}.
+   * Gets an {@link Observable} which will emit a {@link List<Repository>}.
    *
    * @param userId The user id to retrieve data.
    */
-  Observable<UserEntity> get(final int userId);
+  Observable<List<RepositoryRestDto>> get(final int userId);
 
   /**
    * Puts and element into the cache.
    *
    * @param userEntity Element to insert in the cache.
    */
-  void put(UserEntity userEntity);
+  void put(List<RepositoryRestDto> userEntity);
 
   /**
    * Checks if an element (User) exists in the cache.

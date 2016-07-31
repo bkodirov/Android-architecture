@@ -17,11 +17,16 @@ package com.data.repository.datasource;
 
 
 import com.data.cache.UserCache;
-import com.data.entity.UserEntity;
-import com.data.net.RestApi;
+import com.data.model.RepositoriesResponseRestDto;
+import com.data.model.RepositoryRestDto;
+import com.data.net.GithubService;
+import com.domain.entity.Order;
+import com.domain.entity.SearchQuery;
+import com.domain.entity.Sort;
 
 import java.util.List;
 
+import retrofit2.adapter.rxjava.Result;
 import rx.Observable;
 import rx.functions.Action1;
 
@@ -30,33 +35,29 @@ import rx.functions.Action1;
  */
 class CloudUserDataStore implements UserDataStore {
 
-  private final RestApi restApi;
+  private final GithubService mGithubService;
   private final UserCache userCache;
 
-  private final Action1<UserEntity> saveToCacheAction = userEntity -> {
+  private final Action1<RepositoriesResponseRestDto> saveToCacheAction = userEntity -> {
     if (userEntity != null) {
-      CloudUserDataStore.this.userCache.put(userEntity);
+      CloudUserDataStore.this.userCache.put(userEntity.items);
     }
   };
 
   /**
    * Construct a {@link UserDataStore} based on connections to the api (Cloud).
    *
-   * @param restApi The {@link RestApi} implementation to use.
+   * @param githubService The {@link GithubService} implementation to use.
    * @param userCache A {@link UserCache} to cache data retrieved from the api.
    */
-  CloudUserDataStore(RestApi restApi, UserCache userCache) {
-    this.restApi = restApi;
+  CloudUserDataStore(GithubService githubService, UserCache userCache) {
+    mGithubService = githubService;
     this.userCache = userCache;
   }
 
   @Override
-  public Observable<List<UserEntity>> userEntityList() {
-    return this.restApi.userEntityList();
-  }
-
-  @Override
-  public Observable<UserEntity> userEntityDetails(final int userId) {
-    return this.restApi.userEntityById(userId).doOnNext(saveToCacheAction);
+  public Observable<List<RepositoryRestDto>> repositoryList(SearchQuery query, Sort sort, Order order) {
+    Observable<Result<RepositoriesResponseRestDto>> repositories = mGithubService.repositories(query, sort, order);
+    return repositories.map(repositoriesResponseRestDtoResult -> repositoriesResponseRestDtoResult.response().body().items);
   }
 }

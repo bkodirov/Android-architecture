@@ -2,7 +2,7 @@ package com.demo;
 
 import android.app.Application;
 
-import com.demo.data.DataModule;
+import com.data.DataModule;
 import com.demo.ui.UiModule;
 
 import javax.inject.Singleton;

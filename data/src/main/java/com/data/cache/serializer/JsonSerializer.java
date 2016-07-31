@@ -15,7 +15,7 @@
  */
 package com.data.cache.serializer;
 
-import com.data.entity.UserEntity;
+import com.data.model.RepositoriesResponseRestDto;
 import com.google.gson.Gson;
 
 import javax.inject.Inject;
@@ -35,10 +35,10 @@ public class JsonSerializer {
   /**
    * Serialize an object to Json.
    *
-   * @param userEntity {@link UserEntity} to serialize.
+   * @param userEntity {@link RepositoriesResponseRestDto} to serialize.
    */
-  public String serialize(UserEntity userEntity) {
-    String jsonString = gson.toJson(userEntity, UserEntity.class);
+  public String serialize(RepositoriesResponseRestDto userEntity) {
+    String jsonString = gson.toJson(userEntity, RepositoriesResponseRestDto.class);
     return jsonString;
   }
 
@@ -46,10 +46,10 @@ public class JsonSerializer {
    * Deserialize a json representation of an object.
    *
    * @param jsonString A json string to deserialize.
-   * @return {@link UserEntity}
+   * @return {@link RepositoriesResponseRestDto}
    */
-  public UserEntity deserialize(String jsonString) {
-    UserEntity userEntity = gson.fromJson(jsonString, UserEntity.class);
+  public RepositoriesResponseRestDto deserialize(String jsonString) {
+    RepositoriesResponseRestDto userEntity = gson.fromJson(jsonString, RepositoriesResponseRestDto.class);
     return userEntity;
   }
 }

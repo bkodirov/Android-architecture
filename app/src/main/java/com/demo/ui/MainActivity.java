@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.demo.data.Injector;
-import com.demo.data.api.oauth.OauthService;
 
 import javax.inject.Inject;
 
@@ -70,9 +69,9 @@ public final class MainActivity extends AppCompatActivity {
         if (data == null) return;
 
         if ("u2020".equals(data.getScheme())) {
-            Intent serviceIntent = new Intent(this, OauthService.class);
-            serviceIntent.setData(data);
-            startService(serviceIntent);
+//            Intent serviceIntent = new Intent(this, OauthService.class);
+//            serviceIntent.setData(data);
+//            startService(serviceIntent);
         }
     }
 }

@@ -17,7 +17,10 @@ package com.data.repository.datasource;
 
 
 import com.data.cache.UserCache;
-import com.data.entity.UserEntity;
+import com.data.model.RepositoryRestDto;
+import com.domain.entity.Order;
+import com.domain.entity.SearchQuery;
+import com.domain.entity.Sort;
 
 import java.util.List;
 
@@ -40,13 +43,8 @@ class DiskUserDataStore implements UserDataStore {
   }
 
   @Override
-  public Observable<List<UserEntity>> userEntityList() {
-    //TODO: implement simple cache for storing/retrieving collections of users.
+  public Observable<List<RepositoryRestDto>> repositoryList(SearchQuery query, Sort sort, Order order) {
+    //TODO: implement simple cache for storing/retrieving collections of getRepositories.
     throw new UnsupportedOperationException("Operation is not available!!!");
-  }
-
-  @Override
-  public Observable<UserEntity> userEntityDetails(final int userId) {
-     return this.userCache.get(userId);
   }
 }

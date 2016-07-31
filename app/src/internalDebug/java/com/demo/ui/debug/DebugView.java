@@ -18,23 +18,21 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.data.ApiEndpoint;
+import com.data.ApiEndpoints;
+import com.data.IsMockMode;
+import com.data.NetworkDelay;
+import com.data.NetworkFailurePercent;
+import com.data.NetworkVariancePercent;
 import com.demo.data.AnimationSpeed;
-import com.demo.data.ApiEndpoint;
-import com.demo.data.ApiEndpoints;
 import com.demo.data.CaptureIntents;
 import com.demo.data.Injector;
-import com.demo.data.IsMockMode;
 import com.demo.data.LumberYard;
-import com.demo.data.NetworkDelay;
-import com.demo.data.NetworkFailurePercent;
-import com.demo.data.NetworkVariancePercent;
 import com.demo.data.PicassoDebugging;
 import com.demo.data.PixelGridEnabled;
 import com.demo.data.PixelRatioEnabled;
 import com.demo.data.ScalpelEnabled;
 import com.demo.data.ScalpelWireframeEnabled;
-import com.demo.data.api.MockGithubService;
-import com.demo.data.api.MockRepositoriesResponse;
 import com.demo.data.prefs.InetSocketAddressPreferenceAdapter;
 import com.demo.ui.logs.LogsDialog;
 import com.demo.ui.misc.EnumAdapter;
@@ -143,7 +141,6 @@ public final class DebugView extends FrameLayout {
     @Inject @NetworkDelay Preference<Long> networkDelay;
     @Inject @NetworkFailurePercent Preference<Integer> networkFailurePercent;
     @Inject @NetworkVariancePercent Preference<Integer> networkVariancePercent;
-    @Inject MockGithubService mockGithubService;
     @Inject Application app;
     @Inject Set<ContextualDebugActions.DebugAction> debugActions;
 
@@ -311,14 +308,14 @@ public final class DebugView extends FrameLayout {
     }
 
     private void setupMockBehaviorSection() {
-        captureIntentsView.setEnabled(isMockMode);
-        captureIntentsView.setChecked(captureIntents.get());
-        captureIntentsView.setOnCheckedChangeListener((compoundButton, b) -> {
-            Timber.d("Capture intents set to %s", b);
-            captureIntents.set(b);
-        });
-
-        configureResponseSpinner(repositoriesResponseView, MockRepositoriesResponse.class);
+//        captureIntentsView.setEnabled(isMockMode);
+//        captureIntentsView.setChecked(captureIntents.get());
+//        captureIntentsView.setOnCheckedChangeListener((compoundButton, b) -> {
+//            Timber.d("Capture intents set to %s", b);
+//            captureIntents.set(b);
+//        });
+//
+//        configureResponseSpinner(repositoriesResponseView, MockRepositoriesResponse.class);
     }
 
     /**
@@ -328,18 +325,18 @@ public final class DebugView extends FrameLayout {
      */
     private <T extends Enum<T>> void configureResponseSpinner(Spinner spinner,
                                                               final Class<T> responseClass) {
-        final EnumAdapter<T> adapter = new EnumAdapter<>(getContext(), responseClass);
-        spinner.setEnabled(isMockMode);
-        spinner.setAdapter(adapter);
-        spinner.setSelection(mockGithubService.getResponse(responseClass).ordinal());
-
-        RxAdapterView.itemSelections(spinner)
-                .map(adapter::getItem)
-                .filter(item -> item != mockGithubService.getResponse(responseClass))
-                .subscribe(selected -> {
-                    Timber.d("Setting %s to %s", responseClass.getSimpleName(), selected);
-                    mockGithubService.setResponse(responseClass, selected);
-                });
+//        final EnumAdapter<T> adapter = new EnumAdapter<>(getContext(), responseClass);
+//        spinner.setEnabled(isMockMode);
+//        spinner.setAdapter(adapter);
+//        spinner.setSelection(mockGithubService.getResponse(responseClass).ordinal());
+//
+//        RxAdapterView.itemSelections(spinner)
+//                .map(adapter::getItem)
+//                .filter(item -> item != mockGithubService.getResponse(responseClass))
+//                .subscribe(selected -> {
+//                    Timber.d("Setting %s to %s", responseClass.getSimpleName(), selected);
+//                    mockGithubService.setResponse(responseClass, selected);
+//                });
     }
 
     private void setupUserInterfaceSection() {
