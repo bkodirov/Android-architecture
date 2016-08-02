@@ -28,7 +28,7 @@ import static android.content.Context.MODE_PRIVATE;
         library = true
 )
 public final class DataModule {
-    static final int DISK_CACHE_SIZE = (int) DecimalByteUnit.MEGABYTES.toBytes(50);
+    public static final int DISK_CACHE_SIZE = (int) DecimalByteUnit.MEGABYTES.toBytes(50);
 
     @Provides
     @Singleton

@@ -3,7 +3,6 @@ apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'spoon'
 apply plugin: 'me.tatarka.retrolambda'
 
-
 // Manifest version information!
 def versionMajor = 1
 def versionMinor = 0
@@ -33,6 +32,14 @@ def gitTimestamp() {
 
 def isCi = "true".equals(System.getenv("CI"))
 def preDexEnabled = "true".equals(System.getProperty("pre-dex", "true"))
+
+configurations {
+    internalDebugCompile
+    internalReleaseCompile
+    productionDebugCompile
+    productionReleaseCompile
+}
+
 
 android {
     compileSdkVersion 23
@@ -70,6 +77,8 @@ android {
     buildTypes {
         debug {
             applicationIdSuffix '.debug'
+        }
+        release {
         }
     }
 
@@ -110,16 +119,15 @@ configurations.all {
 }
 
 dependencies {
-    compile project (":data")
-    compile project (":domain")
+    compile project(":domain")
+    internalDebugCompile project(path: ':data', configuration: 'internalDebug')
+
     compile 'com.android.support:support-v4:23.3.0'
     compile 'com.android.support:support-annotations:23.3.0'
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support:recyclerview-v7:23.3.0'
     compile 'com.android.support:design:23.3.0'
 
-    compile "com.squareup.dagger:dagger:$depDagger"
-    apt "com.squareup.dagger:dagger-compiler:$depDagger"
 
     internalDebugCompile "com.squareup.retrofit2:retrofit-mock:$depRetrofit"
     compile 'com.squareup.picasso:picasso:2.5.2'

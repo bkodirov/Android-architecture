@@ -6,6 +6,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.SystemClock;
 import android.util.LruCache;
+
+import com.data.DataModule;
 import com.squareup.picasso.Downloader;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
