@@ -120,6 +120,7 @@ configurations.all {
 
 dependencies {
     compile project(":domain")
+    compile project(":presenter")
     internalDebugCompile project(path: ':data', configuration: 'internalDebug')
 
     compile 'com.android.support:support-v4:23.3.0'

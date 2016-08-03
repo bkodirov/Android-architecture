@@ -42,12 +42,6 @@ public final class DataModule {
         return RxSharedPreferences.create(prefs);
     }
 
-//    @Provides
-//    @Singleton
-//    @AccessToken
-//    Preference<String> provideAccessToken(RxSharedPreferences prefs) {
-//        return prefs.getString("access-token");
-//    }
 
     @Provides
     @Singleton
