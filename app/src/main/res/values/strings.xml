@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">BaseApp</string>
+
+    <!--Auth section-->
+    <string name="auth_header">Введите номер вашего мобильного телефона и выберите ваш язык</string>
+    <string name="auth_phone_number">Ваш номер телефона:</string>
+    <string name="auth_agreement">Регистрируясь в приложении Chatlas вы принимаете условия использования приложения и политику конфиденциальности</string>
+    <string name="auth_signinup">Войти или зарегистрироваться</string>
+    <string name="auth_choose_country">Выберите страну:</string>
+    <string name="auth_your_language">Ваш язык:</string>
+
+    <string name="auth_code_sent">Код был выслан на номер:</string>
+    <string name="auth_put_code_here">Введите код</string>
+    <string name="auth_code_resend">Отправить повторно</string>
 </resources>

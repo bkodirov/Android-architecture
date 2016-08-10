@@ -3,6 +3,7 @@ package com.demo.ui;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.demo.ui.main.MainActivity;
 import com.squareup.spoon.Spoon;
 
 import org.junit.Rule;

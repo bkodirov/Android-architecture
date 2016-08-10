@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'spoon'
 apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.fernandocejas.frodo'
 
 // Manifest version information!
 def versionMajor = 1
@@ -76,7 +77,7 @@ android {
 
     buildTypes {
         debug {
-            applicationIdSuffix '.debug'
+//            applicationIdSuffix '.debug'
         }
         release {
         }
@@ -84,10 +85,10 @@ android {
 
     productFlavors {
         internal {
-            applicationId 'no.noname.baseapp.internal'
+            applicationId 'com.chatlas.internal'
         }
         production {
-            applicationId 'no.noname.baseapp'
+            applicationId 'com.chatlas'
         }
     }
 
@@ -114,21 +115,19 @@ configurations {
 
 configurations.all {
     resolutionStrategy {
-        force 'com.android.support:support-annotations:23.3.0'
+        force 'com.android.support:support-annotations:23.4.0'
     }
 }
 
 dependencies {
-    compile project(":domain")
-    compile project(":presenter")
-    internalDebugCompile project(path: ':data', configuration: 'internalDebug')
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:support-v4:23.4.0'
+    compile 'com.android.support:support-annotations:23.4.0'
+    compile 'com.android.support:recyclerview-v7:23.4.0'
+    compile 'com.android.support:design:23.4.0'
+    compile 'com.google.firebase:firebase-messaging:9.4.0'
 
-    compile 'com.android.support:support-v4:23.3.0'
-    compile 'com.android.support:support-annotations:23.3.0'
-    compile 'com.android.support:appcompat-v7:23.3.0'
-    compile 'com.android.support:recyclerview-v7:23.3.0'
-    compile 'com.android.support:design:23.3.0'
-
+    apt "com.squareup.dagger:dagger-compiler:$depDagger"
 
     internalDebugCompile "com.squareup.retrofit2:retrofit-mock:$depRetrofit"
     compile 'com.squareup.picasso:picasso:2.5.2'
@@ -150,6 +149,43 @@ dependencies {
     internalCompile 'com.mattprecious.telescope:telescope:1.5.0@aar'
 
     retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:2.3.0'
+    provided "javax.annotation:jsr250-api:$depJavaxAnnotationVersion"
+    compile "javax.inject:javax.inject:$depJavaxInjectVersion"
+    compile "com.squareup.okhttp:okhttp:$depOkHttpVersion"
+    compile "com.google.code.gson:gson:$depGsonVersion"
+    compile "io.reactivex:rxandroid:$depRxAndroidVersion"
+    compile "com.android.support:support-annotations:$depAndroidAnnotationsVersion"
+
+    compile "com.squareup.dagger:dagger:$depDagger"
+    apt "com.squareup.dagger:dagger-compiler:$depDagger"
+
+    compile "com.squareup.okhttp3:okhttp:$depOkhttp"
+    compile "com.squareup.okhttp3:logging-interceptor:$depOkhttp"
+
+    compile "com.squareup.retrofit2:retrofit:$depRetrofit"
+    compile "com.squareup.retrofit2:converter-gson:$depRetrofit"
+    compile "com.squareup.retrofit2:adapter-rxjava:$depRetrofit"
+    debugCompile "com.squareup.retrofit2:retrofit-mock:$depRetrofit"
+
+    compile "com.jakewharton.timber:timber:$depTimber"
+    compile "com.f2prateek.rx.preferences:rx-preferences:$depRxPreferences"
+    compile "com.jakewharton.threetenabp:threetenabp:$depThreeten"
+    compile "com.jakewharton.byteunits:byteunits:$depByteUnits"
+
+    provided "javax.annotation:jsr250-api:$depJavaxAnnotationVersion"
+
+    compile "javax.inject:javax.inject:$depJavaxInjectVersion"
+    compile "io.reactivex:rxjava:$depRxJavaVersion"
+
+    testCompile  "junit:junit:$depJUnitVersion"
+    testCompile  "org.mockito:mockito-core:$depMockitoVersion"
+
+    //    Persistance
+    apt "com.github.Raizlabs.DBFlow:dbflow-processor:$depDbflowVersion"
+    // use kapt for kotlin apt
+    compile "com.github.Raizlabs.DBFlow:dbflow-core:$depDbflowVersion"
+    compile "com.github.Raizlabs.DBFlow:dbflow:$depDbflowVersion"
+
 
     androidTestCompile 'junit:junit:4.12'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
@@ -175,3 +211,4 @@ android.applicationVariants.all { variant ->
 android.testVariants.all { variant ->
     tasks.getByName('assemble').dependsOn variant.assemble
 }
+apply plugin: 'com.google.gms.google-services'

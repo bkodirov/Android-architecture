@@ -1,6 +1,6 @@
 package com.demo;
 
-import com.data.DebugDataModule;
+import com.demo.data.DebugDataModule;
 import com.demo.ui.DebugUiModule;
 
 import javax.inject.Singleton;

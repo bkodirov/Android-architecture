@@ -18,16 +18,14 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.data.ApiEndpoint;
-import com.data.ApiEndpoints;
-import com.data.IsMockMode;
-import com.data.NetworkDelay;
-import com.data.NetworkFailurePercent;
-import com.data.NetworkVariancePercent;
-import com.demo.data.AnimationSpeed;
-import com.demo.data.CaptureIntents;
-import com.demo.data.Injector;
+import com.demo.DemoApp;
+import com.demo.data.ApiEndpoint;
+import com.demo.data.ApiEndpoints;
+import com.demo.data.IsMockMode;
 import com.demo.data.LumberYard;
+import com.demo.data.NetworkDelay;
+import com.demo.data.NetworkFailurePercent;
+import com.demo.data.NetworkVariancePercent;
 import com.demo.data.PicassoDebugging;
 import com.demo.data.PixelGridEnabled;
 import com.demo.data.PixelRatioEnabled;
@@ -85,9 +83,6 @@ public final class DebugView extends FrameLayout {
     @BindView(R.id.debug_network_proxy) Spinner networkProxyView;
     @BindView(R.id.debug_network_logging) Spinner networkLoggingView;
 
-    @BindView(R.id.debug_capture_intents) Switch captureIntentsView;
-    @BindView(R.id.debug_repositories_response) Spinner repositoriesResponseView;
-
     @BindView(R.id.debug_ui_animation_speed) Spinner uiAnimationSpeedView;
     @BindView(R.id.debug_ui_pixel_grid) Switch uiPixelGridView;
     @BindView(R.id.debug_ui_pixel_ratio) Switch uiPixelRatioView;
@@ -124,14 +119,12 @@ public final class DebugView extends FrameLayout {
     @BindView(R.id.debug_okhttp_cache_hit_count) TextView okHttpCacheHitCountView;
 
     @Inject OkHttpClient client;
-    @Inject @Named("Api") OkHttpClient apiClient;
     @Inject Picasso picasso;
     @Inject LumberYard lumberYard;
     @Inject @IsMockMode boolean isMockMode;
     @Inject @ApiEndpoint Preference<String> networkEndpoint;
     @Inject Preference<InetSocketAddress> networkProxyAddress;
-    @Inject @CaptureIntents Preference<Boolean> captureIntents;
-    @Inject @AnimationSpeed Preference<Integer> animationSpeed;
+    @Inject @Named("AnimationSpeed") Preference<Integer> animationSpeed;
     @Inject @PicassoDebugging Preference<Boolean> picassoDebugging;
     @Inject @PixelGridEnabled Preference<Boolean> pixelGridEnabled;
     @Inject @PixelRatioEnabled Preference<Boolean> pixelRatioEnabled;
@@ -152,7 +145,7 @@ public final class DebugView extends FrameLayout {
 
     public DebugView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        Injector.obtain(context).inject(this);
+        DemoApp.obtain().inject(this);
 
         // Inflate all of the controls and inject them.
         LayoutInflater.from(context).inflate(R.layout.debug_view_content, this);
@@ -161,7 +154,6 @@ public final class DebugView extends FrameLayout {
         contextualDebugActions = new ContextualDebugActions(this, debugActions);
 
         setupNetworkSection();
-        setupMockBehaviorSection();
         setupUserInterfaceSection();
         setupBuildSection();
         setupDeviceSection();
@@ -305,38 +297,6 @@ public final class DebugView extends FrameLayout {
         Timber.d("Prompting to edit custom endpoint URL.");
         // Pass in the currently selected position since we are merely editing.
         showCustomEndpointDialog(endpointView.getSelectedItemPosition(), networkEndpoint.get());
-    }
-
-    private void setupMockBehaviorSection() {
-//        captureIntentsView.setEnabled(isMockMode);
-//        captureIntentsView.setChecked(captureIntents.get());
-//        captureIntentsView.setOnCheckedChangeListener((compoundButton, b) -> {
-//            Timber.d("Capture intents set to %s", b);
-//            captureIntents.set(b);
-//        });
-//
-//        configureResponseSpinner(repositoriesResponseView, MockRepositoriesResponse.class);
-    }
-
-    /**
-     * Populates a {@code Spinner} with the values of an {@code enum} and binds it to the value set
-     * in
-     * the mock service.
-     */
-    private <T extends Enum<T>> void configureResponseSpinner(Spinner spinner,
-                                                              final Class<T> responseClass) {
-//        final EnumAdapter<T> adapter = new EnumAdapter<>(getContext(), responseClass);
-//        spinner.setEnabled(isMockMode);
-//        spinner.setAdapter(adapter);
-//        spinner.setSelection(mockGithubService.getResponse(responseClass).ordinal());
-//
-//        RxAdapterView.itemSelections(spinner)
-//                .map(adapter::getItem)
-//                .filter(item -> item != mockGithubService.getResponse(responseClass))
-//                .subscribe(selected -> {
-//                    Timber.d("Setting %s to %s", responseClass.getSimpleName(), selected);
-//                    mockGithubService.setResponse(responseClass, selected);
-//                });
     }
 
     private void setupUserInterfaceSection() {

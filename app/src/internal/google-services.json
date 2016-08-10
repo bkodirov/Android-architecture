@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "477524491556",
+    "firebase_url": "https://chatlas-4be80.firebaseio.com",
+    "project_id": "chatlas-4be80",
+    "storage_bucket": "chatlas-4be80.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:477524491556:android:ae3d713bdc784fa6",
+        "android_client_info": {
+          "package_name": "com.chatlas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "477524491556-65egs43r6s0m588dlpp6ksnesor6p7ep.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnsNacYaXIAXV3U6ZvMMfStYTAuALCcDY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:477524491556:android:6ecbf2c8feabdf15",
+        "android_client_info": {
+          "package_name": "com.chatlas.internal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "477524491556-65egs43r6s0m588dlpp6ksnesor6p7ep.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnsNacYaXIAXV3U6ZvMMfStYTAuALCcDY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
