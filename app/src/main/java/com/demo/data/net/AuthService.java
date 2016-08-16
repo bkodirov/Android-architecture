@@ -1,9 +1,14 @@
 package com.demo.data.net;
 
+import com.demo.data.model.ResponseWrapper;
+import com.demo.data.model.auth.CountriesData;
 import com.demo.data.model.auth.SendSmsRequest;
+import com.demo.data.model.auth.SmsSendResponseData;
 import com.demo.data.model.auth.VerifyRequest;
-import com.demo.data.model.response.Response;
+import com.demo.domain.entity.User;
 
+import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import rx.Observable;
 
@@ -11,8 +16,13 @@ import rx.Observable;
  * Created by Beka on 8/8/16.
  */
 public interface AuthService {
+
+    @GET("/api/Account/countries")
+    Observable<ResponseWrapper<CountriesData>> getCountries();
+
     @POST("/api/Account/RegisterBySMS")
-    Observable<Response> register(SendSmsRequest sendSmsRequest);
+    Observable<ResponseWrapper<SmsSendResponseData>> register(@Body SendSmsRequest sendSmsRequest);
+
     @POST ("/api/Account/VerifyBySms")
-    Observable<Response> verifyCode(VerifyRequest verifyRequest);
+    Observable<ResponseWrapper<User>> verifyCode(@Body VerifyRequest verifyRequest);
 }

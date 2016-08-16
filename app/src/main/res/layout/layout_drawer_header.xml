@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    android:layout_gravity="center_vertical"
+    android:gravity="top">
+
+    <ImageView
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageViewBackground"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_menu"
+        android:adjustViewBounds="true"
+        android:contentDescription="@null"/>
+
+    <TextView
+	    android:background="?attr/selectableItemBackground"
+	    android:padding="20dp"
+	    android:textSize="18sp"
+	    android:gravity="center_vertical"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:textColor="@android:color/white"
+	    android:text="User"
+	    android:id="@+id/textViewEmail"
+	    android:clickable="true"
+	    android:layout_alignBottom="@+id/imageViewBackground"
+	    android:layout_alignParentLeft="true"
+	    android:layout_alignParentStart="true"
+	    tools:ignore="HardcodedText"/>
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/imageViewProfilePhoto"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_above="@+id/textViewEmail"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+</RelativeLayout>

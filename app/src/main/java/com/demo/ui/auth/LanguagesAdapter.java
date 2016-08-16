@@ -1,37 +1,48 @@
 package com.demo.ui.auth;
 
-import android.support.v7.widget.RecyclerView;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.demo.domain.entity.Language;
+import com.demo.ui.misc.BindingAdapter;
 
 import java.util.List;
 
 /**
  * Created by Beka on 8/11/16.
  */
-public class LanguagesAdapter extends RecyclerView.Adapter<LanguageViewHolder>{
+public class LanguagesAdapter extends BindingAdapter<Language, LanguageViewHolder> {
     private final List<Language> mLanguages;
 
-    public LanguagesAdapter(List<Language> languages) {
-        mLanguages = languages;
+    public LanguagesAdapter(Context context, List<Language> list) {
+        super(context, list);
+        mLanguages = list;
     }
 
     @Override
-    public LanguageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_spinner_dropdown_item, parent, false);
+    public View newView(LayoutInflater inflater, int position, ViewGroup container) {
+        return inflater.inflate(android.R.layout.simple_spinner_dropdown_item, container, false);
+    }
+
+    @Override
+    public LanguageViewHolder buildViewHolder(View view) {
         return new LanguageViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(LanguageViewHolder holder, int position) {
-        holder.bind(mLanguages.get(position));
+    public void bindView(Language item, int position, View view, LanguageViewHolder viewHolder) {
+        viewHolder.bind(mLanguages.get(position));
     }
 
     @Override
-    public int getItemCount() {
-        return mLanguages.size();
+    public View newDropDownView(LayoutInflater inflater, int position, ViewGroup container) {
+        return inflater.inflate(android.R.layout.simple_spinner_dropdown_item, container, false);
+    }
+
+    @Override
+    public void bindDropDownView(Language item, int position, View view, LanguageViewHolder viewHolder) {
+        viewHolder.bind(mLanguages.get(position));
     }
 }

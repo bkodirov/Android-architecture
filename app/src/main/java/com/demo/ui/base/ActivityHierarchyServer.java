@@ -1,4 +1,4 @@
-package com.demo.ui;
+package com.demo.ui.base;
 
 import android.app.Activity;
 import android.app.Application;

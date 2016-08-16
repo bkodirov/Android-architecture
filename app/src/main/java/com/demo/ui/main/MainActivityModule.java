@@ -1,17 +1,14 @@
 package com.demo.ui.main;
 
-import com.demo.DemoappModule;
-
 import dagger.Module;
 
 @Module(
-    addsTo = DemoappModule.class
+        injects = {
+                SideMenuDrawerFragment.class,
+                MainActivity.class
+        },
+        complete = false,
+        library = true
 )
 public final class MainActivityModule {
-  private final MainActivity mainActivity;
-
-  MainActivityModule(MainActivity mainActivity) {
-    this.mainActivity = mainActivity;
-  }
-
 }

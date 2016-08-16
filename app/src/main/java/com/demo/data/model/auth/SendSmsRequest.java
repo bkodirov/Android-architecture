@@ -8,17 +8,17 @@ import com.google.gson.annotations.SerializedName;
 public class SendSmsRequest {
 
     @SerializedName("NativeLanguage")
-    private String nativeLanguage;
+    private int nativeLanguage;
     @SerializedName("PhoneNumber")
     private String phoneNumber;
     @SerializedName("CountryCode")
     private String countryCode;
 
-    public String getNativeLanguage() {
+    public int getNativeLanguage() {
         return nativeLanguage;
     }
 
-    public void setNativeLanguage(String nativeLanguage) {
+    public void setNativeLanguage(int nativeLanguage) {
         this.nativeLanguage = nativeLanguage;
     }
 

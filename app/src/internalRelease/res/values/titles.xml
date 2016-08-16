@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="application_name">DemoApp Sample Internal</string>
-  <string name="launcher_name">DemoApp Internal</string>
+  <string name="application_name">Chatlas Sample Internal</string>
+  <string name="launcher_name">Chatlas Internal</string>
 </resources>

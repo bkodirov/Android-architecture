@@ -22,7 +22,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewDebug;
 
-import com.demo.ui.ActivityHierarchyServer;
+import com.demo.ui.base.ActivityHierarchyServer;
 
 import java.io.IOException;
 import java.io.OutputStream;

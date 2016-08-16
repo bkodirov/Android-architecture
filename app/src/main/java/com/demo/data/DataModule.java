@@ -49,8 +49,8 @@ public final class DataModule {
 
     @Provides
     @Singleton
-    Gson provideMoshi() {
-        return new GsonBuilder().create();
+    Gson provideGson() {
+        return new GsonBuilder().setDateFormat("MM/dd/yyyy HH:mm:ss ZZZZZ").create();
     }
 
     @Provides

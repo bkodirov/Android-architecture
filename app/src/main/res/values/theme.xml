@@ -3,23 +3,32 @@
     <style name="None">
     </style>
 
-    <style name="Theme.U2020" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:textColorPrimary">@color/text_color_primary</item>
-        <item name="android:textColorSecondary">@color/text_color_secondary</item>
+    <style name="Theme.Chatlas.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/windowBackground</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textColorHint">@color/textColorHint</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
 
         <item name="android:progressBarStyle">@style/Widget.U2020.ProgressBar</item>
 
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowActionBarOverlay">true</item>
-        <item name="android:windowBackground">@color/content_background</item>
+        <!--<item name="android:windowContentOverlay">@null</item>-->
+        <!--<item name="android:windowActionBarOverlay">true</item>-->
+        <!--<item name="android:windowBackground">@color/content_background</item>-->
 
         <item name="colorAccent">@color/accent</item>
         <item name="colorPrimary">@color/accent</item>
-        <item name="android:statusBarColor" tools:ignore="NewApi">@color/status_bar</item>
+
+        <!-- colorPrimaryDark is used for the status bar -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+
+
+        <item name="android:statusBarColor" tools:ignore="NewApi">@color/colorPrimaryDark</item>
         <item name="android:windowDrawsSystemBarBackgrounds" tools:ignore="NewApi">true</item>
+
+        <item name="android:selectableItemBackground">@drawable/selectable_item_background</item>
     </style>
 
-    <style name="Theme.U2020.TrendingTimespan" parent="Theme.AppCompat.Light">
-    </style>
+    <style name="Theme.ChatlasTheme" parent="Theme.Chatlas.Base" />
 
 </resources>

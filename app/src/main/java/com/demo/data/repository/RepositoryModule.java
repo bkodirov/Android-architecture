@@ -1,7 +1,9 @@
 package com.demo.data.repository;
 
+import com.demo.data.repository.auth.AuthRepositoryImpl;
 import com.demo.data.repository.content.CommonContentRepositoryImpl;
 import com.demo.data.repository.languages.LanguagesRepositoryImpl;
+import com.demo.domain.repository.AuthRepository;
 import com.demo.domain.repository.CommonContentRepository;
 import com.demo.domain.repository.LanguagesRepository;
 
@@ -19,12 +21,17 @@ import dagger.Provides;
 public class RepositoryModule {
 
     @Provides
-    LanguagesRepository provideLanguagesRepository(LanguagesRepositoryImpl languagesRepositoryImpl){
+    LanguagesRepository provideLanguagesRepository(LanguagesRepositoryImpl languagesRepositoryImpl) {
         return languagesRepositoryImpl;
     }
 
     @Provides
-    CommonContentRepository provideCommonContentRepository(CommonContentRepositoryImpl repository){
+    CommonContentRepository provideCommonContentRepository(CommonContentRepositoryImpl repository) {
         return repository;
+    }
+
+    @Provides
+    AuthRepository provideAuthRepository(AuthRepositoryImpl authRepository) {
+        return authRepository;
     }
 }

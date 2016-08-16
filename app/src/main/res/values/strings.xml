@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BaseApp</string>
+    <string name="app_name">Chatlas</string>
 
     <!--Auth section-->
     <string name="auth_header">Введите номер вашего мобильного телефона и выберите ваш язык</string>
@@ -12,4 +12,12 @@
     <string name="auth_code_sent">Код был выслан на номер:</string>
     <string name="auth_put_code_here">Введите код</string>
     <string name="auth_code_resend">Отправить повторно</string>
+
+
+    <!--Search-->
+    <string name="search_view_hint">Поиск</string>
+    <string name="search_hint_say">Говорите</string>
+    <string name="wait">Подождите</string>
+
+
 </resources>

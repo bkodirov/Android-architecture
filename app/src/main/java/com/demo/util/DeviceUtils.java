@@ -1,5 +1,6 @@
 package com.demo.util;
 
+import android.app.Application;
 import android.content.Context;
 import android.provider.Settings;
 
@@ -12,7 +13,7 @@ public class DeviceUtils  {
     private final Context mContext;
 
     @Inject
-    public DeviceUtils(Context context) {
+    public DeviceUtils(Application context) {
         mContext = context;
     }
 

@@ -3,6 +3,7 @@ package com.demo;
 import android.app.Application;
 
 import com.demo.data.DataModule;
+import com.demo.service.ServiceModule;
 import com.demo.ui.UiModule;
 
 import javax.inject.Singleton;
@@ -13,7 +14,8 @@ import dagger.Provides;
 @Module(
         includes = {
                 UiModule.class,
-                DataModule.class
+                DataModule.class,
+                ServiceModule.class
         },
         injects = {
                 DemoApp.class

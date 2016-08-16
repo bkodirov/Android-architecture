@@ -1,4 +1,19 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'spoon'
 apply plugin: 'me.tatarka.retrolambda'
@@ -53,7 +68,7 @@ android {
 
     signingConfigs {
         u2020 {
-            storeFile file('u2020.keystore')
+            storeFile file('../chatlas.jks')
             storePassword 'android'
             keyAlias 'android'
             keyPassword 'android'
@@ -94,6 +109,7 @@ android {
 
     lintOptions {
         textReport true
+        abortOnError false
         textOutput 'stdout'
         fatal 'UnusedResources'
     }
@@ -129,22 +145,24 @@ dependencies {
 
     apt "com.squareup.dagger:dagger-compiler:$depDagger"
 
-    internalDebugCompile "com.squareup.retrofit2:retrofit-mock:$depRetrofit"
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.0.1'
 
     compile 'com.jakewharton:butterknife:8.2.1'
     apt 'com.jakewharton:butterknife-compiler:8.2.1'
     compile 'com.jakewharton.rxbinding:rxbinding:0.3.0'
+
+    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
     internalDebugCompile 'com.jakewharton.madge:madge:1.1.3'
     internalDebugCompile 'com.jakewharton.scalpel:scalpel:1.1.2'
     internalDebugCompile 'com.jakewharton:process-phoenix:1.0.2'
 
-    internalCompile 'com.squareup.leakcanary:leakcanary-android:1.3.1'
-    productionCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1'
+    internalCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
+    productionCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
 
     compile 'io.reactivex:rxjava:1.1.0'
-    compile 'io.reactivex:rxandroid:1.1.0'
+    compile "io.reactivex:rxandroid:$depRxAndroidVersion"
+    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar'
 
     internalCompile 'com.mattprecious.telescope:telescope:1.5.0@aar'
 
@@ -153,7 +171,7 @@ dependencies {
     compile "javax.inject:javax.inject:$depJavaxInjectVersion"
     compile "com.squareup.okhttp:okhttp:$depOkHttpVersion"
     compile "com.google.code.gson:gson:$depGsonVersion"
-    compile "io.reactivex:rxandroid:$depRxAndroidVersion"
+
     compile "com.android.support:support-annotations:$depAndroidAnnotationsVersion"
 
     compile "com.squareup.dagger:dagger:$depDagger"
@@ -166,22 +184,23 @@ dependencies {
     compile "com.squareup.retrofit2:converter-gson:$depRetrofit"
     compile "com.squareup.retrofit2:adapter-rxjava:$depRetrofit"
     debugCompile "com.squareup.retrofit2:retrofit-mock:$depRetrofit"
+//    internalDebugCompile "com.squareup.retrofit2:retrofit-mock:$depRetrofit"
 
     compile "com.jakewharton.timber:timber:$depTimber"
-    compile "com.f2prateek.rx.preferences:rx-preferences:$depRxPreferences"
+
     compile "com.jakewharton.threetenabp:threetenabp:$depThreeten"
     compile "com.jakewharton.byteunits:byteunits:$depByteUnits"
 
-    provided "javax.annotation:jsr250-api:$depJavaxAnnotationVersion"
-
     compile "javax.inject:javax.inject:$depJavaxInjectVersion"
-    compile "io.reactivex:rxjava:$depRxJavaVersion"
+
 
     testCompile  "junit:junit:$depJUnitVersion"
     testCompile  "org.mockito:mockito-core:$depMockitoVersion"
 
     //    Persistance
     apt "com.github.Raizlabs.DBFlow:dbflow-processor:$depDbflowVersion"
+    compile "com.f2prateek.rx.preferences:rx-preferences:$depRxPreferences"
+
     // use kapt for kotlin apt
     compile "com.github.Raizlabs.DBFlow:dbflow-core:$depDbflowVersion"
     compile "com.github.Raizlabs.DBFlow:dbflow:$depDbflowVersion"
@@ -197,6 +216,9 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
     testCompile 'com.google.truth:truth:0.27'
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.2@aar') {
+        transitive = true;
+    }
 }
 
 def installAll = tasks.create('installAll')

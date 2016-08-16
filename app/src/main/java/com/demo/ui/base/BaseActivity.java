@@ -1,4 +1,4 @@
-package com.demo.ui;
+package com.demo.ui.base;
 
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
 
 import com.demo.DemoApp;
+import com.demo.ui.ViewContainer;
 
 import javax.inject.Inject;
 

@@ -4,20 +4,22 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.demo.domain.entity.Language;
-import com.demo.ui.BaseViewHolder;
+import com.demo.ui.misc.ViewHolder;
 
 import butterknife.BindView;
 
 /**
  * Created by Beka on 8/11/16.
  */
-public class LanguageViewHolder extends BaseViewHolder{
+public class LanguageViewHolder extends ViewHolder {
 
-@BindView(android.R.id.text1) TextView mTextView;
+    @BindView(android.R.id.text1) TextView mTextView;
+
     public LanguageViewHolder(View itemView) {
         super(itemView);
     }
-    public void bind(Language language){
+
+    public void bind(Language language) {
         mTextView.setText(language.getName());
     }
 }

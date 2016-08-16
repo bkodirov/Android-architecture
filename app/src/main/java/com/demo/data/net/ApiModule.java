@@ -53,5 +53,19 @@ public final class ApiModule {
     ContentService provideContentService(Retrofit retrofit){
         return retrofit.create(ContentService.class);
     }
+    @Provides
+    AuthService provideAuthService(Retrofit retrofit){
+        return  retrofit.create(AuthService.class);
+    }
 
+    @Provides
+    TwilioService provideTwilioService(OkHttpClient client, Gson gson){
+        Retrofit retrofit = new Retrofit.Builder() //
+                .client(client) //
+                .baseUrl(HttpUrl.parse("https://lookups.twilio.com/v1/")) //
+                .addConverterFactory(GsonConverterFactory.create(gson)) //
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) //
+                .build();
+        return retrofit.create(TwilioService.class);
+    }
 }

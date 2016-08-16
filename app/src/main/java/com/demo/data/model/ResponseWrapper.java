@@ -1,20 +1,21 @@
-package com.demo.data.model.auth;
+package com.demo.data.model;
 
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by Beka on 8/10/16.
+ * Created by Beka on 8/11/16.
  */
-public class SendSmsResponse {
+public class ResponseWrapper<T> {
     @SerializedName("IsSuccess")
     private int IsSuccess;
-    private SmsSendResponseData Data;
+    @SerializedName("Data")
+    private T data;
 
     public boolean isSuccess() {
         return IsSuccess > 0;
     }
 
-    public SmsSendResponseData getData() {
-        return Data;
+    public T getData() {
+        return data;
     }
 }

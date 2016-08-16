@@ -37,4 +37,24 @@ public class VerifyRequest {
     public String getSmsCode() {
         return SmsCode;
     }
+
+    public void setPhoneNumber(String phoneNumber) {
+        PhoneNumber = phoneNumber;
+    }
+
+    public void setPushToken(String pushToken) {
+        PushToken = pushToken;
+    }
+
+    public void setRequestId(String requestId) {
+        RequestId = requestId;
+    }
+
+    public void setDeviceId(String deviceId) {
+        DeviceId = deviceId;
+    }
+
+    public void setSmsCode(String smsCode) {
+        SmsCode = smsCode;
+    }
 }

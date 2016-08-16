@@ -5,6 +5,10 @@
           package="no.noname.baseapp">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
     <application
         tools:overrideLibrary="timber.log"
         android:name="com.demo.DemoApp"
@@ -12,7 +16,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.U2020">
+        android:theme="@style/Theme.ChatlasTheme">
         <activity
             android:name="com.demo.ui.main.MainActivity"
             android:screenOrientation="portrait"
@@ -53,6 +57,11 @@
             </intent-filter>
         </service>
 
+        <!--Dummy activity for RxActivityResult-->
+        <activity android:name="com.demo.ui.rx_activity_result.HolderActivity"/>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="a72475c889d49c30bf16223e1f9d2bf18ecf5720" />
     </application>
 
 </manifest>

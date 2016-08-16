@@ -1,9 +1,11 @@
 package com.demo.domain.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by Beka on 8/3/16.
  */
-public class Language {
+public class Language implements Serializable{
     private String name;
     private String code;
     private int value;

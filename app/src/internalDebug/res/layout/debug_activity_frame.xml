@@ -6,40 +6,45 @@
     android:id="@+id/debug_drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+
     >
-  <com.mattprecious.telescope.TelescopeLayout
-    android:id="@+id/telescope_container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:progressColor="@color/bugreport_frame"
-    >
-    <com.jakewharton.madge.MadgeFrameLayout
-        android:id="@+id/madge_container"
+
+    <com.mattprecious.telescope.TelescopeLayout
+        android:id="@+id/telescope_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:progressColor="@color/bugreport_frame"
         >
-      <com.jakewharton.scalpel.ScalpelFrameLayout
-          android:id="@+id/debug_content"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          />
-    </com.jakewharton.madge.MadgeFrameLayout>
-  </com.mattprecious.telescope.TelescopeLayout>
-  <com.demo.ui.debug.NonConsumingScrimInsetsFrameLayout
-      android:layout_width="290dp"
-      android:layout_height="match_parent"
-      android:layout_gravity="end"
-      android:background="#e222"
-      android:fitsSystemWindows="true"
-      app:insetForeground="#4000"
-      >
-    <ScrollView
-        android:id="@+id/debug_drawer"
-        android:layout_width="match_parent"
+
+        <com.jakewharton.madge.MadgeFrameLayout
+            android:id="@+id/madge_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <com.jakewharton.scalpel.ScalpelFrameLayout
+                android:id="@+id/debug_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </com.jakewharton.madge.MadgeFrameLayout>
+    </com.mattprecious.telescope.TelescopeLayout>
+
+    <com.demo.ui.debug.NonConsumingScrimInsetsFrameLayout
+        android:layout_width="290dp"
         android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:background="#e222"
         android:fitsSystemWindows="true"
-        android:clipToPadding="false"
-        />
-  </com.demo.ui.debug.NonConsumingScrimInsetsFrameLayout>
+        app:insetForeground="#4000"
+        >
+
+        <ScrollView
+            android:id="@+id/debug_drawer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:fitsSystemWindows="true"
+            />
+    </com.demo.ui.debug.NonConsumingScrimInsetsFrameLayout>
 </com.demo.ui.debug.DebugDrawerLayout>

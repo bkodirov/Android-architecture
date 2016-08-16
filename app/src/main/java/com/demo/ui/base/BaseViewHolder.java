@@ -1,4 +1,4 @@
-package com.demo.ui;
+package com.demo.ui.base;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

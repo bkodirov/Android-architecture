@@ -1,8 +1,10 @@
-package com.demo.ui;
+package com.demo.ui.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.demo.DemoApp;
@@ -32,5 +34,9 @@ public class BaseFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    protected void setSupportActionBar(Toolbar toolbar){
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
     }
 }

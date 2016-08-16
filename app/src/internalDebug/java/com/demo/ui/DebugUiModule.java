@@ -11,6 +11,7 @@ import com.demo.data.PixelRatioEnabled;
 import com.demo.data.ScalpelEnabled;
 import com.demo.data.ScalpelWireframeEnabled;
 import com.demo.data.SeenDebugDrawer;
+import com.demo.ui.base.ActivityHierarchyServer;
 import com.demo.ui.debug.DebugView;
 import com.demo.ui.debug.DebugViewContainer;
 import com.demo.ui.debug.SocketActivityHierarchyServer;
@@ -53,6 +54,7 @@ public class DebugUiModule {
         // Do not add the debug controls for when we are running inside of an instrumentation test.
         return isInstrumentationTest ? ViewContainer.DEFAULT : debugViewContainer;
     }
+
 
     @Provides
     @Singleton
